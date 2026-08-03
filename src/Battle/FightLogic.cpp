@@ -109,7 +109,7 @@ namespace fightLogic{
             //等级限制后的怪物刷新规则
             std::vector<Monster> availableMons;
             copy_if(monsters.begin(),monsters.end(),std::back_inserter(availableMons),[&player](const Monster &m)
-                {if(player.level >= m.levelRange.first && m.levelRange.second>=player.level+3){return true;}else{return false;}});
+                {if(player.level >= m.levelRange.first && m.levelRange.second+3>=player.level){return true;}else{return false;}});
             // [FIX] 防止 availableMons 为空导致下标越界崩溃
             // 原因：当没有怪物满足等级条件时 availableMons.size()=0
             // uniform_int_distribution(0, -1) 是未定义行为，访问 availableMons[0] 更是越界
@@ -119,8 +119,10 @@ namespace fightLogic{
                 ReadyToFight = false;
                 break;
             }
-            // 怪物等级筛选条件说明：m.levelRange.second >= player.level + 3
-            // 表示怪物最高等级 > 玩家等级+3 才会出现，防止玩家遇到太强的怪
+            // 怪物等级筛选条件说明：
+            // 条件1 player.level >= m.levelRange.first  → 玩家等级不低于怪物最低等级，防止遇到太强的怪
+            // 条件2 m.levelRange.second + 3 >= player.level → 怪物最高等级+3 不低于玩家等级，
+            //        可打窗口 = [minLevel, maxLevel+3]，随等级提升低级怪自然退场，且高级怪不会断档
             int index = Random::range(0, static_cast<int>(availableMons.size()) - 1);
             Monster m = availableMons[index];
             

@@ -48,8 +48,14 @@
 
     //升级经验值相关
     void Player::levelUp() {
+        // [FIX] 等级上限检查：达到 MAXLEVEL 后不再升级（原实现无检查，可无限升级）
+        if (level >= maxlevel) {
+            UIConfig::delay(SHORT_DELAY);
+            std::cout << "你已达到最高等级！" << std::endl;
+            return;
+        }
         level++;
-        expToUp = 10 + pow(level,2);
+        expToUp = 10 + level*level;
         std::cout << "你升级了！当前等级:" << level << std::endl;
         hp_UpperLimit+=5+floor(1.5*level);
         currentHp = hp_UpperLimit;
@@ -59,7 +65,8 @@
     }
     void Player::expEnough(int e) {
         exp += e;
-        while (exp >= expToUp) {
+        // [FIX] while 条件加 level < maxlevel：达上限后不再扣经验，防止等级封顶后经验被白白扣光
+        while (exp >= expToUp && level < maxlevel) {
             exp -= expToUp;
             levelUp();
         }
