@@ -1,0 +1,11 @@
+{
+    "medicines": [
+        { "id":10001, "name":"草药", "hp_restore":10, "stackable":true, "baseQuantity":3 },
+        { "id":10002, "name":"活血草", "hp_restore":15, "stackable":true, "baseQuantity":1 },
+        { "id":10003, "name":"小药水", "hp_restore":20, "stackable":true, "baseQuantity":0 }
+    ],
+    "equipments": [
+        { "id":20001, "name":"匕首", "type_2":"weapon", "atk":[1,1], "def":0, "stackable":false, "baseQuantity":1 },
+        { "id":30001, "name":"厚衣服", "type_2":"armor", "atk":[0,0], "def":1, "stackable":false, "baseQuantity":1 }
+    ]
+}

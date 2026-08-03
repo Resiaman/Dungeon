@@ -1,0 +1,21 @@
+# ---- 构建产物 ----
+build/
+cmake-build-*/
+*.exe
+*.o
+*.obj
+*.ilk
+*.pdb
+*.dll
+
+# ---- 运行时生成 ----
+save/savegame.json
+
+# ---- IDE ----
+.vscode/
+.vs/
+.idea/
+
+# ---- 系统文件 ----
+Thumbs.db
+Desktop.ini
