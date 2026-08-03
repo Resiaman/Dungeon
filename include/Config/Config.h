@@ -27,13 +27,13 @@ namespace Random {
 constexpr int SHORT_DELAY = 500;
 constexpr int LONG_DELAY = 1000;
 
-constexpr int STARTHP = 20;
+constexpr int STARTHP = 25;    // [V5.0] 20→25：新手期容错（攻击浮动下限时也打得过森林怪）
 constexpr int STARTDEF = 0;
 constexpr int STARTLEVEL = 0;
 constexpr int STARTEXP = 0;
 
 constexpr int MAXLEVEL = 60;
-constexpr int EXPTOUP = 10;
+constexpr int EXPTOUP = 15;   // [V5.0] 对应新经验公式 0 级需求 15 = 15 + 8*0
 constexpr int MIN_ATK = 3;
 constexpr int MAX_ATK = 7;
 constexpr int STARTMEDICINE = 3;

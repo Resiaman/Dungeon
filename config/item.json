@@ -1,11 +1,33 @@
 {
     "medicines": [
-        { "id":10001, "name":"草药", "hp_restore":10, "stackable":true, "baseQuantity":3 },
-        { "id":10002, "name":"活血草", "hp_restore":15, "stackable":true, "baseQuantity":1 },
-        { "id":10003, "name":"小药水", "hp_restore":20, "stackable":true, "baseQuantity":0 }
+        { "id": 10001, "name": "草药", "hp_restore": 10, "stackable": true, "baseQuantity": 3 },
+        { "id": 10002, "name": "活血草", "hp_restore": 15, "stackable": true, "baseQuantity": 1 },
+        { "id": 10003, "name": "小药水", "hp_restore": 20, "stackable": true, "baseQuantity": 0 },
+        { "id": 10004, "name": "中药水", "hp_restore": 35, "stackable": true, "baseQuantity": 0 },
+        { "id": 10005, "name": "大药水", "hp_restore": 60, "stackable": true, "baseQuantity": 0 },
+        { "id": 10006, "name": "秘制药水", "hp_restore": 100, "stackable": true, "baseQuantity": 0 }
     ],
     "equipments": [
-        { "id":20001, "name":"匕首", "type_2":"weapon", "atk":[1,1], "def":0, "stackable":false, "baseQuantity":1 },
-        { "id":30001, "name":"厚衣服", "type_2":"armor", "atk":[0,0], "def":1, "stackable":false, "baseQuantity":1 }
+        { "id": 20001, "name": "匕首", "type_2": "weapon", "atk": [1,1], "def": 0, "stackable": false, "baseQuantity": 1 },
+        { "id": 20002, "name": "铁剑", "type_2": "weapon", "atk": [2,4], "def": 0, "stackable": false, "baseQuantity": 0 },
+        { "id": 20003, "name": "精钢剑", "type_2": "weapon", "atk": [4,7], "def": 0, "stackable": false, "baseQuantity": 0 },
+        { "id": 20004, "name": "符文剑", "type_2": "weapon", "atk": [7,11], "def": 0, "stackable": false, "baseQuantity": 0 },
+        { "id": 20005, "name": "秘银剑", "type_2": "weapon", "atk": [11,16], "def": 0, "stackable": false, "baseQuantity": 0 },
+        { "id": 20006, "name": "龙牙剑", "type_2": "weapon", "atk": [16,22], "def": 0, "stackable": false, "baseQuantity": 0 },
+        { "id": 20007, "name": "星辰剑", "type_2": "weapon", "atk": [22,29], "def": 0, "stackable": false, "baseQuantity": 0 },
+        { "id": 21001, "name": "野猪王獠牙", "type_2": "weapon", "atk": [3,6], "def": 0, "stackable": false, "baseQuantity": 0 },
+        { "id": 21002, "name": "酋长战斧", "type_2": "weapon", "atk": [7,12], "def": 0, "stackable": false, "baseQuantity": 0 },
+        { "id": 21003, "name": "巨魔战锤", "type_2": "weapon", "atk": [12,18], "def": 0, "stackable": false, "baseQuantity": 0 },
+        { "id": 21004, "name": "守卫长剑", "type_2": "weapon", "atk": [17,24], "def": 0, "stackable": false, "baseQuantity": 0 },
+        { "id": 21005, "name": "毒龙之牙", "type_2": "weapon", "atk": [22,31], "def": 0, "stackable": false, "baseQuantity": 0 },
+        { "id": 21006, "name": "领主之刃", "type_2": "weapon", "atk": [29,40], "def": 0, "stackable": false, "baseQuantity": 0 },
+        { "id": 21007, "name": "魔王的裁决", "type_2": "weapon", "atk": [38,52], "def": 0, "stackable": false, "baseQuantity": 0 },
+        { "id": 30001, "name": "厚衣服", "type_2": "armor", "atk": [0,0], "def": 1, "stackable": false, "baseQuantity": 1 },
+        { "id": 30002, "name": "皮甲", "type_2": "armor", "atk": [0,0], "def": 2, "stackable": false, "baseQuantity": 0 },
+        { "id": 30003, "name": "锁子甲", "type_2": "armor", "atk": [0,0], "def": 4, "stackable": false, "baseQuantity": 0 },
+        { "id": 30004, "name": "板甲", "type_2": "armor", "atk": [0,0], "def": 6, "stackable": false, "baseQuantity": 0 },
+        { "id": 30005, "name": "秘银甲", "type_2": "armor", "atk": [0,0], "def": 9, "stackable": false, "baseQuantity": 0 },
+        { "id": 30006, "name": "龙鳞甲", "type_2": "armor", "atk": [0,0], "def": 12, "stackable": false, "baseQuantity": 0 },
+        { "id": 30007, "name": "星辉甲", "type_2": "armor", "atk": [0,0], "def": 16, "stackable": false, "baseQuantity": 0 }
     ]
 }

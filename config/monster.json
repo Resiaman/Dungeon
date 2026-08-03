@@ -1,36 +1,64 @@
 {
     "monsters": [
-        {
-            "name":"兔子","hp":10,"atk":[1,3],"exp":3,"minLevel":0,"maxLevel":10,
-            "drops":[ {"itemId":10001, "weight":33} ]
-        },
-        {
-            "name":"野狗","hp":15,"atk":[1,5],"exp":5,"minLevel":0,"maxLevel":10,
-            "drops":[ {"itemId":10001, "weight":33} ]
-        },
-        {
-            "name":"野猪","hp":20,"atk":[3,7],"exp":6,"minLevel":0,"maxLevel":10,
-            "drops":[ {"itemId":10001, "weight":33} ]
-        },
-        {
-            "name":"野牛","hp":50,"atk":[3,8],"exp":9,"minLevel":3,"maxLevel":13,
-            "drops":[ {"itemId":10001, "weight":33} ]
-        },
-        {
-            "name":"无毒蛇","hp":15,"atk":[5,9],"exp":10,"minLevel":5,"maxLevel":15,
-            "drops":[ {"itemId":10001, "weight":33} ]
-        },
-        {
-            "name":"哥布林","hp":60,"atk":[5,9],"exp":18,"minLevel":5,"maxLevel":15,
-            "drops":[ {"itemId":10001, "weight":33}, {"itemId":10003, "weight":10} ]
-        },
-        {
-            "name":"兽人","hp":78,"atk":[7,16],"exp":20,"minLevel":10,"maxLevel":20,
-            "drops":[ {"itemId":10001, "weight":33}, {"itemId":10003, "weight":10} ]
-        },
-        {
-            "name":"猛虎","hp":100,"atk":[10,18],"exp":28,"minLevel":10,"maxLevel":20,
-            "drops":[ {"itemId":10001, "weight":33}, {"itemId":10003, "weight":10} ]
-        }
+        { "name": "兔子", "hp": 10, "atk": [1,3], "exp": 4, "minLevel": 0, "maxLevel": 10,
+          "drops": [ {"itemId": 10001, "weight": 85}, {"itemId": 20001, "weight": 8}, {"itemId": 30001, "weight": 7} ] },
+        { "name": "野狗", "hp": 14, "atk": [1,4], "exp": 6, "minLevel": 0, "maxLevel": 10,
+          "drops": [ {"itemId": 10001, "weight": 85}, {"itemId": 20001, "weight": 8}, {"itemId": 30001, "weight": 7} ] },
+        { "name": "野猪", "hp": 20, "atk": [1,4], "exp": 8, "minLevel": 0, "maxLevel": 10,
+          "drops": [ {"itemId": 10001, "weight": 85}, {"itemId": 20001, "weight": 8}, {"itemId": 30001, "weight": 7} ] },
+        { "name": "野牛", "hp": 35, "atk": [3,6], "exp": 12, "minLevel": 4, "maxLevel": 13,
+          "drops": [ {"itemId": 10001, "weight": 85}, {"itemId": 20001, "weight": 8}, {"itemId": 30001, "weight": 7} ] },
+        { "name": "毒蛇", "hp": 30, "atk": [5,9], "exp": 15, "minLevel": 8, "maxLevel": 18,
+          "drops": [ {"itemId": 10002, "weight": 85}, {"itemId": 20002, "weight": 8}, {"itemId": 30002, "weight": 7} ] },
+        { "name": "哥布林", "hp": 65, "atk": [5,9], "exp": 22, "minLevel": 8, "maxLevel": 18,
+          "drops": [ {"itemId": 10002, "weight": 85}, {"itemId": 20002, "weight": 8}, {"itemId": 30002, "weight": 7} ] },
+        { "name": "兽人", "hp": 85, "atk": [7,16], "exp": 28, "minLevel": 10, "maxLevel": 20,
+          "drops": [ {"itemId": 10002, "weight": 85}, {"itemId": 20002, "weight": 8}, {"itemId": 30002, "weight": 7} ] },
+        { "name": "猛虎", "hp": 110, "atk": [10,18], "exp": 35, "minLevel": 10, "maxLevel": 20,
+          "drops": [ {"itemId": 10002, "weight": 85}, {"itemId": 20002, "weight": 8}, {"itemId": 30002, "weight": 7} ] },
+        { "name": "洞穴蝙蝠", "hp": 60, "atk": [10,16], "exp": 32, "minLevel": 16, "maxLevel": 26,
+          "drops": [ {"itemId": 10003, "weight": 85}, {"itemId": 20003, "weight": 8}, {"itemId": 30003, "weight": 7} ] },
+        { "name": "哥布林战士", "hp": 100, "atk": [14,22], "exp": 45, "minLevel": 16, "maxLevel": 26,
+          "drops": [ {"itemId": 10003, "weight": 85}, {"itemId": 20003, "weight": 8}, {"itemId": 30003, "weight": 7} ] },
+        { "name": "灰熊", "hp": 150, "atk": [16,26], "exp": 55, "minLevel": 18, "maxLevel": 28,
+          "drops": [ {"itemId": 10003, "weight": 85}, {"itemId": 20003, "weight": 8}, {"itemId": 30003, "weight": 7} ] },
+        { "name": "石像鬼", "hp": 120, "atk": [20,30], "exp": 60, "minLevel": 24, "maxLevel": 34,
+          "drops": [ {"itemId": 10004, "weight": 85}, {"itemId": 20004, "weight": 8}, {"itemId": 30004, "weight": 7} ] },
+        { "name": "骷髅战士", "hp": 160, "atk": [24,34], "exp": 75, "minLevel": 24, "maxLevel": 34,
+          "drops": [ {"itemId": 10004, "weight": 85}, {"itemId": 20004, "weight": 8}, {"itemId": 30004, "weight": 7} ] },
+        { "name": "遗迹守卫", "hp": 230, "atk": [28,40], "exp": 90, "minLevel": 26, "maxLevel": 36,
+          "drops": [ {"itemId": 10004, "weight": 85}, {"itemId": 20004, "weight": 8}, {"itemId": 30004, "weight": 7} ] },
+        { "name": "巨蜥", "hp": 180, "atk": [32,44], "exp": 100, "minLevel": 32, "maxLevel": 42,
+          "drops": [ {"itemId": 10005, "weight": 85}, {"itemId": 20005, "weight": 8}, {"itemId": 30005, "weight": 7} ] },
+        { "name": "沼泽女巫", "hp": 220, "atk": [36,50], "exp": 120, "minLevel": 32, "maxLevel": 42,
+          "drops": [ {"itemId": 10005, "weight": 85}, {"itemId": 20005, "weight": 8}, {"itemId": 30005, "weight": 7} ] },
+        { "name": "腐毒兽", "hp": 300, "atk": [40,55], "exp": 140, "minLevel": 34, "maxLevel": 44,
+          "drops": [ {"itemId": 10005, "weight": 85}, {"itemId": 20005, "weight": 8}, {"itemId": 30005, "weight": 7} ] },
+        { "name": "深渊恶魔", "hp": 260, "atk": [48,64], "exp": 160, "minLevel": 40, "maxLevel": 52,
+          "drops": [ {"itemId": 10006, "weight": 85}, {"itemId": 20006, "weight": 8}, {"itemId": 30006, "weight": 7} ] },
+        { "name": "堕落骑士", "hp": 330, "atk": [54,70], "exp": 190, "minLevel": 40, "maxLevel": 52,
+          "drops": [ {"itemId": 10006, "weight": 85}, {"itemId": 20006, "weight": 8}, {"itemId": 30006, "weight": 7} ] },
+        { "name": "深渊魔将", "hp": 420, "atk": [62,80], "exp": 230, "minLevel": 42, "maxLevel": 54,
+          "drops": [ {"itemId": 10006, "weight": 85}, {"itemId": 20006, "weight": 8}, {"itemId": 30006, "weight": 7} ] },
+        { "name": "暗影魔", "hp": 360, "atk": [78,95], "exp": 260, "minLevel": 48, "maxLevel": 60,
+          "drops": [ {"itemId": 10006, "weight": 85}, {"itemId": 20007, "weight": 8}, {"itemId": 30007, "weight": 7} ] },
+        { "name": "地狱使者", "hp": 480, "atk": [88,105], "exp": 320, "minLevel": 48, "maxLevel": 60,
+          "drops": [ {"itemId": 10006, "weight": 85}, {"itemId": 20007, "weight": 8}, {"itemId": 30007, "weight": 7} ] },
+        { "name": "混沌兽", "hp": 620, "atk": [100,118], "exp": 400, "minLevel": 50, "maxLevel": 60,
+          "drops": [ {"itemId": 10006, "weight": 85}, {"itemId": 20007, "weight": 8}, {"itemId": 30007, "weight": 7} ] },
+        { "name": "野猪王", "hp": 60, "atk": [4,8], "exp": 30, "minLevel": 3, "maxLevel": 10, "isBoss": true,
+          "drops": [ {"itemId": 21001, "weight": 70}, {"itemId": 10001, "weight": 20}, {"itemId": 20001, "weight": 10} ] },
+        { "name": "兽人酋长", "hp": 260, "atk": [14,22], "exp": 80, "minLevel": 8, "maxLevel": 18, "isBoss": true,
+          "drops": [ {"itemId": 21002, "weight": 70}, {"itemId": 10002, "weight": 20}, {"itemId": 20002, "weight": 10} ] },
+        { "name": "洞穴巨魔", "hp": 420, "atk": [22,32], "exp": 140, "minLevel": 16, "maxLevel": 26, "isBoss": true,
+          "drops": [ {"itemId": 21003, "weight": 70}, {"itemId": 10003, "weight": 20}, {"itemId": 20003, "weight": 10} ] },
+        { "name": "遗迹守卫长", "hp": 600, "atk": [34,46], "exp": 220, "minLevel": 24, "maxLevel": 34, "isBoss": true,
+          "drops": [ {"itemId": 21004, "weight": 70}, {"itemId": 10004, "weight": 20}, {"itemId": 20004, "weight": 10} ] },
+        { "name": "沼泽毒龙", "hp": 850, "atk": [48,62], "exp": 320, "minLevel": 32, "maxLevel": 42, "isBoss": true,
+          "drops": [ {"itemId": 21005, "weight": 70}, {"itemId": 10005, "weight": 20}, {"itemId": 20005, "weight": 10} ] },
+        { "name": "深渊领主", "hp": 1150, "atk": [64,82], "exp": 450, "minLevel": 40, "maxLevel": 52, "isBoss": true,
+          "drops": [ {"itemId": 21006, "weight": 70}, {"itemId": 10006, "weight": 20}, {"itemId": 20006, "weight": 10} ] },
+        { "name": "深渊之王", "hp": 1600, "atk": [85,105], "exp": 650, "minLevel": 48, "maxLevel": 60, "isBoss": true,
+          "drops": [ {"itemId": 21007, "weight": 70}, {"itemId": 10006, "weight": 20}, {"itemId": 20007, "weight": 10} ] }
     ]
 }

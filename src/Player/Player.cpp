@@ -55,13 +55,29 @@
             return;
         }
         level++;
-        expToUp = 10 + level*level;
+        // [V5.0] 二段成长曲线：
+        // 前段(≤39级)线性：expToUp = 15 + 8*level，升级温和（每级 HP+6/攻+1~2/防+1）
+        // 后段(≥40级)二次加速：expToUp 增加 3*(level-39)^2，属性增量随等级递增——厚积薄发
+        if (level <= 39) {
+            expToUp = 15 + 8 * level;
+        } else {
+            expToUp = 15 + 8 * level + 3 * (level - 39) * (level - 39);
+        }
         std::cout << "你升级了！当前等级:" << level << std::endl;
-        hp_UpperLimit+=5+floor(1.5*level);
+        // 属性增量（二段）：前段固定，后段随超出 39 级的幅度递增
+        int hpGain = 6, atkMinGain = 1, atkMaxGain = 2, defGain = 1;
+        if (level >= 40) {
+            int extra = level - 39;   // 超出分段点的级数（1~20）
+            hpGain    += extra;
+            atkMinGain += static_cast<int>(floor(0.1 * extra));
+            atkMaxGain += static_cast<int>(floor(0.2 * extra));
+            defGain    += static_cast<int>(floor(0.1 * extra));
+        }
+        hp_UpperLimit += hpGain;
         currentHp = hp_UpperLimit;
-        atk.first+=floor(0.5*level);
-        atk.second+=ceil(1.25*level);
-        def+=floor(0.95*level);
+        atk.first  += atkMinGain;
+        atk.second += atkMaxGain;
+        def        += defGain;
     }
     void Player::expEnough(int e) {
         exp += e;

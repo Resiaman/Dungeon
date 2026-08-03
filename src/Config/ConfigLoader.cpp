@@ -52,6 +52,8 @@ const std::vector<Monster>& ConfigLoader::loadMonsters(const std::string& filepa
         int exp = item["exp"];
         int minLevel = item["minLevel"];
         int maxLevel = item["maxLevel"];
+        // [V5.0] 可选 Boss 标志，缺省为普通怪
+        bool isBoss = item.value("isBoss", false);
 
         // [FIX_J] 解析掉落表
         std::vector<DropEntry> drops;
@@ -66,7 +68,7 @@ const std::vector<Monster>& ConfigLoader::loadMonsters(const std::string& filepa
         }
 
         s_monsters.emplace_back(name, hp, std::make_pair(atk_min, atk_max),
-                                exp, std::make_pair(minLevel, maxLevel), std::move(drops));
+                                exp, std::make_pair(minLevel, maxLevel), std::move(drops), isBoss);
     }
 
     std::cout << "已加载 " << s_monsters.size() << " 个怪物" << std::endl;

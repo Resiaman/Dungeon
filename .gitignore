@@ -1,21 +1,18 @@
-# ---- 构建产物 ----
+# 构建产物
 build/
-cmake-build-*/
 *.exe
-*.o
 *.obj
-*.ilk
-*.pdb
-*.dll
+*.o
+*.dll.a
 
-# ---- 运行时生成 ----
-save/savegame.json
+# 运行时数据（存档）
+save/
 
-# ---- IDE ----
+# IDE / 编辑器
 .vscode/
-.vs/
 .idea/
+*.swp
 
-# ---- 系统文件 ----
-Thumbs.db
-Desktop.ini
+# 测试脚本（本地自动化冒烟测试，不随仓库分发）
+test_*.py
+test_input.txt

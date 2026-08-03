@@ -102,32 +102,42 @@ namespace fightLogic{
     //无尽战斗循环
     void unlimitedFight(Player &player, std::vector<Monster> &monsters, bool &ReadyToFight){
         while(player.currentHp > 0 && ReadyToFight){
-            //随机选择一个怪物(索引)
-            // int index = std::uniform_int_distribution<int>(0, monsters.size()-1)(gen);
-            // Monster m = monsters[index];
-            
-            //等级限制后的怪物刷新规则
+            // [V5.0] 普通怪池与 Boss 池分开筛选（Boss 有独立刷新概率）
             std::vector<Monster> availableMons;
+            std::vector<Monster> availableBoss;
             copy_if(monsters.begin(),monsters.end(),std::back_inserter(availableMons),[&player](const Monster &m)
-                {if(player.level >= m.levelRange.first && m.levelRange.second+3>=player.level){return true;}else{return false;}});
-            // [FIX] 防止 availableMons 为空导致下标越界崩溃
-            // 原因：当没有怪物满足等级条件时 availableMons.size()=0
-            // uniform_int_distribution(0, -1) 是未定义行为，访问 availableMons[0] 更是越界
-            // 需要在访问前检查，为空时退出战斗循环
-            if (availableMons.empty()) {
+                {if(!m.isBoss && player.level >= m.levelRange.first && m.levelRange.second+3>=player.level){return true;}else{return false;}});
+            copy_if(monsters.begin(),monsters.end(),std::back_inserter(availableBoss),[&player](const Monster &m)
+                {if(m.isBoss && player.level >= m.levelRange.first && m.levelRange.second+3>=player.level){return true;}else{return false;}});
+
+            Monster m;
+            bool isBossFight = false;
+            // Boss 战：Boss 池非空时 10% 概率遭遇（普通怪为主，Boss 是惊喜）
+            if (!availableBoss.empty() && Random::range(1, 100) <= 10) {
+                m = availableBoss[Random::range(0, static_cast<int>(availableBoss.size()) - 1)];
+                isBossFight = true;
+            } else if (!availableMons.empty()) {
+                m = availableMons[Random::range(0, static_cast<int>(availableMons.size()) - 1)];
+            } else {
+                // [FIX] 防止 availableMons 为空导致下标越界崩溃
+                // 原因：当没有怪物满足等级条件时 availableMons.size()=0
+                // uniform_int_distribution(0, -1) 是未定义行为，访问 availableMons[0] 更是越界
+                // 需要在访问前检查，为空时退出战斗循环
                 std::cout << "当前等级没有可挑战的怪物！" << std::endl;
                 ReadyToFight = false;
                 break;
             }
+            
             // 怪物等级筛选条件说明：
             // 条件1 player.level >= m.levelRange.first  → 玩家等级不低于怪物最低等级，防止遇到太强的怪
             // 条件2 m.levelRange.second + 3 >= player.level → 怪物最高等级+3 不低于玩家等级，
             //        可打窗口 = [minLevel, maxLevel+3]，随等级提升低级怪自然退场，且高级怪不会断档
-            int index = Random::range(0, static_cast<int>(availableMons.size()) - 1);
-            Monster m = availableMons[index];
-            
             UIConfig::delay(SHORT_DELAY);
-            std::cout << "你遇到了" << m.name << "！" << std::endl;
+            if (isBossFight) {
+                std::cout << "⚠️ 你遭遇了 BOSS：" << m.name << "！" << std::endl;
+            } else {
+                std::cout << "你遇到了" << m.name << "！" << std::endl;
+            }
             //单局战斗循环
             currentFight(player,m,ReadyToFight);
         }

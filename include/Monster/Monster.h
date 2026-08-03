@@ -22,10 +22,14 @@ public:
     int killExp;
     std::pair<int,int> levelRange;
     std::vector<DropEntry> drops;  // [FIX_J] 掉落表替代 hardcode
+    bool isBoss;                   // [V5.0] Boss 标志：属性更高、战斗有提示、掉落多次 roll
+    
+    // [V5.0] 默认构造函数（供遇敌选择时先声明后赋值）
+    Monster() : name(""), hp(0), atk({0,0}), killExp(0), levelRange({0,0}), drops(), isBoss(false) {}
     
     Monster(std::string n, int h, std::pair<int,int> a, int exp,
-            std::pair<int,int> b, std::vector<DropEntry> d = {})
-        : name(n), hp(h), atk(a), killExp(exp), levelRange(b), drops(std::move(d)) {}
+            std::pair<int,int> b, std::vector<DropEntry> d = {}, bool boss = false)
+        : name(n), hp(h), atk(a), killExp(exp), levelRange(b), drops(std::move(d)), isBoss(boss) {}
     
     void takeDamage(int d);
     void attack(Player &player);
