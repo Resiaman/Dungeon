@@ -1,4 +1,6 @@
 #include "Config/saveManager.h"
+#include <cstdio>
+#include <cerrno>
 #include <fstream>
 #include <iostream>
 
@@ -12,7 +14,7 @@
 static bool createDirIfNeeded(const std::string& path) {
     size_t pos = path.find_last_of("/\\");
     if (pos == std::string::npos) return true;  // 当前目录
-    
+
     std::string dir = path.substr(0, pos);
 #ifdef _WIN32
     return _mkdir(dir.c_str()) == 0 || errno == EEXIST;
@@ -28,15 +30,56 @@ bool SaveManager::saveGame(const Player& player, const std::string& filepath) {
         return false;
     }
 
-    std::ofstream file(filepath);
-    if (!file.is_open()) {
-        std::cerr << "无法打开存档文件: " << filepath << std::endl;
-        return false;
+    const std::string tmp = filepath + ".tmp";
+    {
+        std::ofstream file(tmp);
+        if (!file.is_open()) {
+            std::cerr << "[P0-2] 无法打开临时存档文件: " << tmp << std::endl;
+            return false;
+        }
+
+        file << player.toJson().dump(4);
+        file.close();
+        if (!file.good()) {
+            std::cerr << "[P0-2] 写入临时存档失败: " << tmp << std::endl;
+            return false;
+        }
     }
 
-    nlohmann::json j = player.toJson();
-    file << j.dump(4);
-    file.close();
+    {
+        std::ifstream verify(tmp);
+        if (!verify.is_open()) {
+            std::cerr << "[P0-2] 无法打开临时存档进行校验: " << tmp << std::endl;
+            return false;
+        }
+
+        nlohmann::json jv;
+        try {
+            verify >> jv;
+        } catch (const std::exception& e) {
+            std::cerr << "[P0-2] 存档校验失败: " << e.what() << std::endl;
+            return false;
+        }
+    }
+
+    bool hasOldSave = false;
+    {
+        std::ifstream check(filepath);
+        hasOldSave = check.good();
+    }
+
+    if (hasOldSave) {
+        std::remove((filepath + ".bak").c_str());
+        if (std::rename(filepath.c_str(), (filepath + ".bak").c_str()) != 0) {
+            std::cerr << "[P0-2] 备份旧存档失败" << std::endl;
+            return false;
+        }
+    }
+
+    if (std::rename(tmp.c_str(), filepath.c_str()) != 0) {
+        std::cerr << "[P0-2] 替换存档失败" << std::endl;
+        return false;
+    }
 
     std::cout << "游戏已保存至 " << filepath << std::endl;
     return true;

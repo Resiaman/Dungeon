@@ -16,3 +16,8 @@ save/
 # 娴嬭瘯鑴氭湰锛堟湰鍦拌嚜鍔ㄥ寲鍐掔儫娴嬭瘯锛屼笉闅忎粨搴撳垎鍙戯級
 test_*.py
 test_input.txt
+
+# 过程报告（不提交，内容并入版本说明）
+P0_*_done.txt
+build_baseline.log
+.serena/

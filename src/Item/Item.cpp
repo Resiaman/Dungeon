@@ -1,6 +1,7 @@
 #include "Item/Item.h"
 #include "Item/Equipment.h"
 #include "Item/Medicine.h"
+#include <iostream>
 
 // 基类 toJson：提供默认实现（子类各自覆盖）
 nlohmann::json Item::toJson() const {
@@ -30,6 +31,9 @@ std::unique_ptr<Item> Item::fromJson(nlohmann::json &j) {
         std::string name = j.at("name");
         int ID = j.at("ID");
         EquipmentType etype = stringToEqEnum(j.at("EquipmentType"));
+        if (etype == EquipmentType::count) {
+            throw std::runtime_error("未知的装备类型: " + std::string(j.at("EquipmentType")));
+        }
         int atk_min = j.at("atk_min");
         int atk_max = j.at("atk_max");
         std::pair<int,int> atk = std::make_pair(atk_min, atk_max);
@@ -61,11 +65,13 @@ std::string Item::enumToString(ItemType it){
     ItemType Item::stringToItEnum(const std::string& s){
         if(s == "medicine") return ItemType::Medicine;
         if(s == "equipment") return ItemType::Equipment;
-        throw std::runtime_error("Unknown equipment type: " + s);
+        std::cerr << "[P0-1] Warning: 未知物品类型 '" << s << "'，回退为 Medicine" << std::endl;
+        return ItemType::Medicine;
     }
 
     EquipmentType Item::stringToEqEnum(const std::string& s){
         if(s == "weapon") return EquipmentType::weapon;
         if(s == "armor") return EquipmentType::armor;
-        throw std::runtime_error("Unknown equipment type: " + s);
+        std::cerr << "[P0-1] Warning: 未知装备类型 '" << s << "'，返回哨兵 EquipmentType::count" << std::endl;
+        return EquipmentType::count;
     }
